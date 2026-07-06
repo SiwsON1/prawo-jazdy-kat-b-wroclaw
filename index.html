@@ -15,238 +15,267 @@
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --ink: #0E1A2F;
-      --ink-2: #081326;
-      --paper: #f4f6f9;
-      --paper-2: #e7ebf1;
+      --navy: #21314a;
+      --navy-light: #2a3f5f;
+      --navy-dark: #182336;
+      --brand: #FEA900;
+      --brand-light: #ffbd33;
+      --brand-dark: #e59800;
+      --orange: #fb8e28;
+      --ink: #21314a;
+      --txt: #41495a;
+      --txt-soft: #6c7688;
+      --paper: #f4f6fa;
       --surface: #ffffff;
-      --line: #dde3ec;
-      --go: #FEA900;          /* ADJ gold-amber - kolor tozsamosci */
-      --go-deep: #e59800;
-      --go-soft: #fff2d6;
-      --road: #FEA900;        /* ADJ gold-amber */
-      --txt: #263241;
-      --txt-soft: #5b6675;
+      --line: #e5e9f0;
+      --sh-sm: 0 1px 2px rgba(33,49,74,.06);
+      --sh-md: 0 2px 6px rgba(33,49,74,.06), 0 14px 30px rgba(33,49,74,.09);
+      --sh-lg: 0 8px 24px rgba(33,49,74,.10), 0 30px 64px rgba(33,49,74,.16);
+      --sh-brand: 0 10px 26px rgba(254,169,0,.34);
       --font-display: "Work Sans", Arial, sans-serif;
       --font-body: "Work Sans", Arial, sans-serif;
       --font-nav: "Roboto", Arial, sans-serif;
       --max-w: 1200px;
       --r-sm: 10px;
-      --r-md: 18px;
-      --r-lg: 28px;
-      --r-xl: 40px;
-      --sh-md: 0 2px 6px rgba(14,26,47,.05), 0 16px 36px rgba(14,26,47,.08);
-      --sh-lg: 0 6px 18px rgba(14,26,47,.08), 0 36px 70px rgba(14,26,47,.14);
+      --r-md: 16px;
+      --r-lg: 24px;
+      --r-xl: 34px;
       --ease: cubic-bezier(.23,1,.32,1);
       --ease-io: cubic-bezier(.77,0,.175,1);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 88px; -webkit-font-smoothing: antialiased; }
-    body { font-family: var(--font-body); color: var(--txt); background: var(--paper); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    body { font-family: var(--font-body); color: var(--txt); background: var(--surface); font-size: 16px; line-height: 1.62; overflow-x: hidden; }
     a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
     .wrap { width: 100%; max-width: var(--max-w); margin-inline: auto; padding-inline: 26px; }
-    ::selection { background: var(--go); color: #fff; }
-    :focus-visible { outline: 3px solid var(--go-deep); outline-offset: 3px; border-radius: 4px; }
+    ::selection { background: var(--brand); color: var(--navy); }
+    :focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; border-radius: 5px; }
 
-    .chip {
-      display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-body);
-      font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
-      color: var(--go-deep); background: var(--go-soft); border: 1px solid #f3d488;
-      padding: 7px 13px; border-radius: 999px;
-    }
-    .chip .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--go); box-shadow: 0 0 0 4px rgba(254,169,0,.18); }
-    .kicker { font-family: var(--font-body); font-size: .82rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--go-deep); }
-    h2.title { font-family: var(--font-display); font-weight: 800; color: var(--ink); line-height: 1.02; letter-spacing: -.02em; font-size: clamp(2rem, 1.1rem + 3.2vw, 3.3rem); }
-    .lead { color: var(--txt-soft); font-size: 1.08rem; max-width: 60ch; }
+    /* Pills */
+    .pill { display: inline-flex; align-items: center; gap: 8px; font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 7px 14px; border-radius: 999px; line-height: 1; }
+    .pill--gold { background: var(--brand); color: var(--navy); }
+    .pill--soft { background: #eef1f6; color: var(--navy-light); border: 1px solid var(--line); }
+    .pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--navy); }
+    .pill--soft .dot { background: var(--brand); }
+    .kicker { display: inline-block; font-size: .8rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--brand-dark); }
+
+    h1, h2, h3 { font-family: var(--font-display); color: var(--ink); letter-spacing: -.02em; }
+    h2.title { font-weight: 800; line-height: 1.05; font-size: clamp(1.9rem, 1.1rem + 2.9vw, 3rem); }
+    .lead { color: var(--txt-soft); font-size: 1.08rem; max-width: 58ch; }
 
     /* Buttons */
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: var(--font-body); font-weight: 700; font-size: 1rem; padding: 15px 26px; border-radius: 999px; border: 0; cursor: pointer; transition: transform .16s var(--ease), box-shadow .25s var(--ease), background .2s var(--ease); will-change: transform; }
-    .btn svg { width: 18px; height: 18px; transition: transform .25s var(--ease); }
-    .btn--go { background: var(--go); color: #fff; box-shadow: 0 10px 26px rgba(254,169,0,.32); }
-    .btn--go:hover { background: var(--go-deep); transform: translateY(-2px); }
-    .btn--go:hover svg { transform: translateX(4px); }
-    .btn--go:active { transform: scale(.97); }
-    .btn--ink { background: var(--ink); color: #fff; }
-    .btn--ink:hover { transform: translateY(-2px); box-shadow: var(--sh-md); }
-    .btn--ink:active { transform: scale(.97); }
-    .btn--out { background: transparent; color: var(--ink); border: 1.6px solid var(--line); }
-    .btn--out:hover { border-color: var(--ink); transform: translateY(-2px); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 11px; font-family: var(--font-display); font-weight: 700; font-size: 1rem; padding: 15px 26px; border-radius: 999px; border: 0; cursor: pointer; transition: transform .16s var(--ease), box-shadow .25s var(--ease), background .2s var(--ease); }
+    .btn__ic { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; flex: none; }
+    .btn__ic svg { width: 15px; height: 15px; transition: transform .25s var(--ease); }
+    .btn--gold { background: var(--brand); color: var(--navy); box-shadow: var(--sh-brand); }
+    .btn--gold .btn__ic { background: var(--navy); color: var(--brand); }
+    .btn--gold:hover { background: var(--brand-light); transform: translateY(-2px); }
+    .btn--gold:hover .btn__ic svg { transform: translateX(3px); }
+    .btn--gold:active { transform: scale(.97); }
+    .btn--navy { background: var(--navy); color: #fff; box-shadow: 0 8px 22px rgba(33,49,74,.28); }
+    .btn--navy .btn__ic { background: rgba(255,255,255,.16); color: var(--brand); }
+    .btn--navy:hover { background: var(--navy-light); transform: translateY(-2px); }
+    .btn--navy:hover .btn__ic svg { transform: translateX(3px); }
+    .btn--navy:active { transform: scale(.97); }
+    .btn--out { background: transparent; color: var(--navy); border: 1.7px solid #cfd6e2; }
+    .btn--out:hover { border-color: var(--navy); background: #f2f5f9; transform: translateY(-2px); }
     .btn--out:active { transform: scale(.97); }
 
     /* Header */
-    .header { position: sticky; top: 0; z-index: 60; background: rgba(244,246,249,.82); backdrop-filter: saturate(150%) blur(12px); transition: box-shadow .3s var(--ease), border-color .3s var(--ease); border-bottom: 1px solid transparent; }
-    .header.scrolled { box-shadow: 0 8px 28px rgba(14,26,47,.06); border-color: var(--line); }
-    .header__in { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 22px; }
-    .brand { display: flex; align-items: center; gap: 11px; }
-    .brand__mark { width: 40px; height: 30px; border-radius: 6px; background: var(--ink); color: var(--road); font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; display: grid; place-items: center; position: relative; box-shadow: inset 0 0 0 2px rgba(255,255,255,.12); }
-    .brand__mark::before { content: ""; position: absolute; left: 0; top: 4px; bottom: 4px; width: 7px; background: #176CD5; border-radius: 6px 0 0 6px; }
-    .brand__txt b { font-family: var(--font-display); font-weight: 800; color: var(--ink); font-size: 1.06rem; display: block; line-height: 1; letter-spacing: -.01em; }
-    .brand__txt span { font-size: .72rem; font-weight: 600; color: var(--txt-soft); letter-spacing: .12em; text-transform: uppercase; }
-    .nav { display: flex; align-items: center; gap: 28px; }
-    .nav a { font-family: var(--font-nav); font-size: .94rem; font-weight: 600; color: var(--txt-soft); position: relative; padding: 4px 0; transition: color .2s var(--ease); }
-    .nav a::after { content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: var(--go); transition: width .3s var(--ease); }
+    .header { position: sticky; top: 0; z-index: 60; background: rgba(255,255,255,.86); backdrop-filter: saturate(160%) blur(12px); border-bottom: 1px solid transparent; transition: box-shadow .3s var(--ease), border-color .3s var(--ease); }
+    .header.scrolled { box-shadow: 0 6px 24px rgba(33,49,74,.07); border-color: var(--line); }
+    .header__in { display: flex; align-items: center; justify-content: space-between; height: 74px; gap: 22px; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand__mark { width: 44px; height: 34px; border-radius: 8px; background: var(--navy); color: var(--brand); font-family: var(--font-display); font-weight: 800; font-size: 1.25rem; display: grid; place-items: center; position: relative; box-shadow: inset 0 0 0 2px rgba(255,255,255,.08); }
+    .brand__mark::before { content: ""; position: absolute; left: 0; top: 5px; bottom: 5px; width: 6px; background: var(--brand); border-radius: 8px 0 0 8px; }
+    .brand__txt b { font-family: var(--font-display); font-weight: 800; color: var(--ink); font-size: 1.05rem; display: block; line-height: 1; }
+    .brand__txt span { font-size: .68rem; font-weight: 700; color: var(--txt-soft); letter-spacing: .16em; text-transform: uppercase; }
+    .nav { display: flex; align-items: center; gap: 26px; }
+    .nav a { font-family: var(--font-nav); font-size: .93rem; font-weight: 500; color: var(--navy-light); position: relative; padding: 4px 0; transition: color .2s var(--ease); }
+    .nav a::after { content: ""; position: absolute; left: 0; bottom: -3px; height: 2.5px; width: 0; background: var(--brand); border-radius: 2px; transition: width .3s var(--ease); }
     .nav a:hover { color: var(--ink); } .nav a:hover::after { width: 100%; }
     .header__cta .btn { padding: 11px 20px; font-size: .92rem; }
 
     /* Hero */
-    .hero { position: relative; padding: 70px 0 30px; overflow: hidden; }
-    .hero::before { content: ""; position: absolute; top: -240px; left: 50%; transform: translateX(-30%); width: 760px; height: 760px; background: radial-gradient(circle, rgba(254,169,0,.16), rgba(254,169,0,0) 64%); pointer-events: none; }
-    .hero__grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.08fr .92fr; gap: 50px; align-items: center; }
-    .hero h1 { font-family: var(--font-display); font-weight: 800; color: var(--ink); font-size: clamp(2.5rem, 1rem + 6vw, 4.6rem); line-height: .98; letter-spacing: -.03em; margin: 20px 0 22px; }
-    .hero h1 .mark { color: var(--go-deep); position: relative; white-space: nowrap; }
-    .hero h1 .mark::after { content: ""; position: absolute; left: 0; right: 0; bottom: .08em; height: .14em; background: repeating-linear-gradient(90deg, var(--road) 0 16px, transparent 16px 28px); border-radius: 2px; }
-    .hero__cta { display: flex; flex-wrap: wrap; gap: 13px; margin: 30px 0 26px; }
-    .hero__trust { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; color: var(--txt-soft); font-size: .9rem; font-weight: 600; }
-    .hero__trust .sep { width: 5px; height: 5px; border-radius: 50%; background: var(--line); }
+    .hero { position: relative; padding: 66px 0 40px; overflow: hidden; background: linear-gradient(180deg, #fbfcfe, var(--surface)); }
+    .hero::before { content: ""; position: absolute; top: -160px; right: -120px; width: 620px; height: 620px; background: radial-gradient(circle, rgba(254,169,0,.14), rgba(254,169,0,0) 66%); pointer-events: none; }
+    .hero__grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.02fr .98fr; gap: 54px; align-items: center; }
+    .hero__pills { display: flex; gap: 9px; flex-wrap: wrap; margin-bottom: 20px; }
+    .hero h1 { font-weight: 800; font-size: clamp(2.3rem, 1rem + 5vw, 4rem); line-height: 1.02; margin-bottom: 20px; }
+    .hero h1 .mark { color: var(--brand-dark); position: relative; white-space: nowrap; }
+    .hero h1 .mark::after { content: ""; position: absolute; left: 0; right: 0; bottom: .05em; height: .12em; background: var(--brand); opacity: .55; border-radius: 3px; }
+    .hero__cta { display: flex; flex-wrap: wrap; gap: 13px; margin: 28px 0 22px; }
+    .hero__trust { display: flex; flex-direction: column; gap: 9px; }
+    .hero__trust li { display: flex; align-items: center; gap: 10px; font-size: .96rem; font-weight: 500; color: var(--navy-light); list-style: none; }
+    .hero__trust .ck { width: 22px; height: 22px; border-radius: 50%; background: #fff5df; color: var(--brand-dark); display: grid; place-items: center; flex: none; }
+    .hero__trust .ck svg { width: 13px; height: 13px; }
 
-    /* Hero plate visual */
-    .plate-stage { position: relative; display: grid; place-items: center; min-height: 380px; }
-    .plate { position: relative; transform: rotate(-4deg); background: linear-gradient(180deg, #fff, #f1f1ea); border: 2px solid #1e3352; border-radius: 14px; padding: 20px 26px 20px 64px; box-shadow: var(--sh-lg); display: flex; align-items: center; gap: 14px; }
-    .plate::before { content: "PL"; position: absolute; left: 0; top: 0; bottom: 0; width: 46px; background: #176CD5; color: #fff; font-family: var(--font-display); font-weight: 800; font-size: .9rem; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 10px; border-radius: 12px 0 0 12px; }
-    .plate::after { content: "★"; position: absolute; left: 14px; top: 12px; color: var(--road); font-size: .8rem; }
-    .plate b { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.6rem, 5vw, 3.6rem); color: #15171048; letter-spacing: .04em; color: #12233d; line-height: 1; }
-    .plate .catb { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.6rem, 5vw, 3.6rem); color: var(--go-deep); letter-spacing: .02em; line-height: 1; }
-    .pchip { position: absolute; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px; box-shadow: var(--sh-md); font-weight: 700; font-size: .9rem; color: var(--ink); display: flex; align-items: center; gap: 9px; }
-    .pchip small { display: block; font-size: .7rem; font-weight: 600; color: var(--txt-soft); text-transform: uppercase; letter-spacing: .08em; }
-    .pchip .ic { width: 30px; height: 30px; border-radius: 8px; background: var(--go-soft); color: var(--go-deep); display: grid; place-items: center; flex: none; }
-    .pchip .ic svg { width: 17px; height: 17px; }
-    .pchip--1 { top: 26px; right: 8px; animation: float1 6s var(--ease) infinite; }
-    .pchip--2 { bottom: 64px; left: -6px; animation: float2 7s var(--ease) infinite; }
-    .pchip--3 { bottom: 0; right: 40px; animation: float1 6.5s var(--ease) infinite .4s; }
-    @keyframes float1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)} }
-    @keyframes float2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+    .hero__media { position: relative; }
+    .hero__photo { border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--sh-lg); border: 6px solid #fff; aspect-ratio: 4/3; }
+    .hero__photo img { width: 100%; height: 100%; object-fit: cover; }
+    .hero__badge { position: absolute; display: flex; align-items: center; gap: 11px; background: #fff; border-radius: 16px; padding: 13px 17px; box-shadow: var(--sh-md); font-weight: 700; color: var(--ink); font-size: .95rem; }
+    .hero__badge small { display: block; font-size: .68rem; font-weight: 700; color: var(--txt-soft); text-transform: uppercase; letter-spacing: .08em; }
+    .hero__badge .ic { width: 34px; height: 34px; border-radius: 10px; background: var(--brand); color: var(--navy); display: grid; place-items: center; flex: none; }
+    .hero__badge .ic svg { width: 18px; height: 18px; }
+    .hero__badge--1 { top: 26px; left: -22px; animation: float 6s var(--ease) infinite; }
+    .hero__badge--2 { bottom: 24px; right: -18px; animation: float 7s var(--ease) infinite .5s; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
 
-    /* Marquee */
-    .marquee { background: var(--ink); color: var(--paper); padding: 16px 0; overflow: hidden; border-block: 1px solid #1e3352; }
-    .marquee__row { display: flex; gap: 0; width: max-content; animation: slide 28s linear infinite; }
-    .marquee__row span { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; padding: 0 26px; display: inline-flex; align-items: center; gap: 26px; white-space: nowrap; }
-    .marquee__row span::after { content: "●"; color: var(--road); font-size: .6rem; }
-    @keyframes slide { to { transform: translateX(-50%); } }
-    .marquee:hover .marquee__row { animation-play-state: paused; }
+    /* Stat strip - ADJ navy cards */
+    .stripe { margin-top: 40px; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .stat { background: var(--navy); border-radius: var(--r-lg); padding: 26px 24px; position: relative; overflow: hidden; }
+    .stat::after { content: ""; position: absolute; right: -20px; top: -20px; width: 90px; height: 90px; background: radial-gradient(circle, rgba(254,169,0,.16), transparent 70%); }
+    .stat b { font-family: var(--font-display); font-weight: 800; font-size: 2.3rem; color: var(--brand); line-height: 1; display: block; letter-spacing: -.02em; }
+    .stat span { display: block; margin-top: 9px; color: #c4cdda; font-size: .9rem; line-height: 1.4; }
 
-    section { padding: 82px 0; }
-    .head { max-width: 720px; margin-bottom: 48px; }
-    .head .title { margin-top: 14px; }
-    .head .lead { margin-top: 16px; }
+    section { padding: 78px 0; }
+    .head { max-width: 680px; margin-bottom: 44px; }
+    .head .kicker { margin-bottom: 14px; }
+    .head .lead { margin-top: 15px; }
     .center { margin-inline: auto; text-align: center; }
     .center .lead { margin-inline: auto; }
 
-    /* Stats */
-    .stats { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; background: var(--surface); }
-    .stat { padding: 34px 26px; border-right: 1px solid var(--line); }
-    .stat:last-child { border-right: 0; }
-    .stat b { font-family: var(--font-display); font-weight: 800; font-size: 2.2rem; color: var(--ink); line-height: 1; letter-spacing: -.02em; display: block; }
-    .stat b em { font-style: normal; color: var(--go-deep); }
-    .stat span { display: block; margin-top: 10px; color: var(--txt-soft); font-size: .92rem; }
+    /* Start - numbered flow */
+    .flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .fstep { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 30px 26px; transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+    .fstep:hover { transform: translateY(-5px); box-shadow: var(--sh-md); }
+    .fstep__n { width: 46px; height: 46px; border-radius: 13px; background: #fff5df; color: var(--brand-dark); font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; display: grid; place-items: center; margin-bottom: 18px; }
+    .fstep h3 { font-weight: 700; font-size: 1.22rem; margin-bottom: 8px; }
+    .fstep p { color: var(--txt-soft); font-size: .96rem; }
 
-    /* Start steps */
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .steps--2 { grid-template-columns: 1fr 1fr; }
-    .step { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); padding: 30px 26px; transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
-    .step:hover { transform: translateY(-5px); box-shadow: var(--sh-md); }
-    .step__n { font-family: var(--font-display); font-weight: 800; font-size: 2.6rem; color: var(--paper-2); line-height: 1; -webkit-text-stroke: 1.5px var(--go); color: transparent; }
-    .step h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; color: var(--ink); margin: 12px 0 8px; }
-    .step p { color: var(--txt-soft); font-size: .96rem; }
-
-    /* Roadmap as a road */
-    .road { background: var(--ink); color: var(--paper); }
-    .road .title, .road .kicker { color: #fff; }
-    .road .kicker { color: var(--road); }
-    .road .lead { color: #9fb0c6; }
-    .roadway { position: relative; max-width: 780px; margin: 50px auto 0; }
-    .roadway::before { content: ""; position: absolute; left: 31px; top: 10px; bottom: 10px; width: 4px; background: repeating-linear-gradient(180deg, var(--road) 0 18px, transparent 18px 40px); opacity: .85; }
-    .stop { position: relative; padding: 0 0 30px 84px; }
+    /* Roadmap - navy */
+    .road { background: var(--navy); color: #fff; border-radius: var(--r-xl); }
+    .road-wrap { padding: 74px 0; }
+    .road .kicker { color: var(--brand); }
+    .road .title { color: #fff; }
+    .road .lead { color: #b9c2d1; }
+    .roadway { position: relative; max-width: 760px; margin: 46px auto 0; }
+    .roadway::before { content: ""; position: absolute; left: 27px; top: 12px; bottom: 12px; width: 4px; background: repeating-linear-gradient(180deg, var(--brand) 0 16px, transparent 16px 34px); opacity: .9; }
+    .stop { position: relative; padding: 0 0 26px 76px; }
     .stop:last-child { padding-bottom: 0; }
-    .stop__n { position: absolute; left: 0; top: 0; width: 64px; height: 64px; border-radius: 50%; background: #12233d; border: 2px solid var(--road); color: #fff; display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; z-index: 1; }
-    .stop--go .stop__n { background: var(--go); border-color: var(--go); }
-    .stop__card { background: #12233d; border: 1px solid #1e3a5f; border-radius: var(--r-md); padding: 22px 24px; }
-    .stop--go .stop__card { background: linear-gradient(180deg, #143a5e, #0f2c49); border-color: var(--go-deep); }
-    .stop h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; color: #fff; margin-bottom: 6px; }
-    .stop p { color: #9fb0c6; font-size: .96rem; }
-    .stop__cta { margin-top: 16px; }
-    .stop__cta .btn { padding: 12px 22px; font-size: .94rem; }
+    .stop__n { position: absolute; left: 0; top: 0; width: 56px; height: 56px; border-radius: 50%; background: var(--navy-dark); border: 2px solid var(--brand); color: #fff; display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; z-index: 1; }
+    .stop--go .stop__n { background: var(--brand); color: var(--navy); border-color: var(--brand); }
+    .stop__card { background: var(--navy-light); border: 1px solid rgba(255,255,255,.08); border-radius: var(--r-md); padding: 20px 24px; }
+    .stop--go .stop__card { background: linear-gradient(180deg, #35507a, #2a3f5f); border-color: rgba(254,169,0,.4); }
+    .stop h3 { color: #fff; font-weight: 700; font-size: 1.15rem; margin-bottom: 5px; }
+    .stop p { color: #b9c2d1; font-size: .95rem; }
+    .stop__cta { margin-top: 15px; }
+    .stop__cta .btn { padding: 11px 20px; font-size: .93rem; }
+
+    /* Icon cards (egzamin) */
+    .icards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .icard { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 30px 26px; transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+    .icard:hover { transform: translateY(-5px); box-shadow: var(--sh-md); }
+    .icard .ic { width: 52px; height: 52px; border-radius: 14px; background: var(--navy); color: var(--brand); display: grid; place-items: center; margin-bottom: 18px; }
+    .icard .ic svg { width: 25px; height: 25px; }
+    .icard h3 { font-weight: 700; font-size: 1.18rem; margin-bottom: 7px; }
+    .icard p { color: var(--txt-soft); font-size: .95rem; }
+
+    /* Compare (manual/automat) */
+    .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .ccard { border-radius: var(--r-lg); padding: 34px 30px; }
+    .ccard--a { background: var(--paper); border: 1px solid var(--line); }
+    .ccard--b { background: var(--navy); color: #fff; }
+    .ccard__tag { display: inline-flex; align-items: center; gap: 8px; font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; margin-bottom: 16px; }
+    .ccard--a .ccard__tag { background: #fff5df; color: var(--brand-dark); }
+    .ccard--b .ccard__tag { background: var(--brand); color: var(--navy); }
+    .ccard h3 { font-weight: 700; font-size: 1.4rem; margin-bottom: 10px; }
+    .ccard--b h3 { color: #fff; }
+    .ccard p { font-size: 1rem; }
+    .ccard--a p { color: var(--txt); }
+    .ccard--b p { color: #c4cdda; }
 
     /* Districts */
-    .dist__grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 50px; align-items: center; }
-    .dist__tags { display: flex; flex-wrap: wrap; gap: 12px; }
-    .dtag { font-weight: 700; font-size: .98rem; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 20px; display: flex; align-items: center; gap: 12px; transition: transform .25s var(--ease), border-color .25s var(--ease); }
-    .dtag:hover { transform: translateY(-3px); border-color: var(--go); }
-    .dtag .pin { width: 10px; height: 10px; border-radius: 50%; background: var(--go); flex: none; box-shadow: 0 0 0 4px var(--go-soft); }
-    .dist__note { margin-top: 26px; padding: 20px 22px; background: var(--go-soft); border: 1px solid #f3d488; border-radius: var(--r-md); color: var(--go-deep); font-weight: 600; font-size: .96rem; }
+    .dist__grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 50px; align-items: center; }
+    .dist__map { border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--sh-md); border: 6px solid #fff; }
+    .dist__map img { width: 100%; height: 100%; object-fit: cover; }
+    .dist__tags { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 22px; }
+    .dtag { font-weight: 600; font-size: .96rem; color: var(--navy); background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 17px; display: flex; align-items: center; gap: 10px; transition: transform .25s var(--ease), border-color .25s var(--ease); }
+    .dtag:hover { transform: translateY(-3px); border-color: var(--brand); }
+    .dtag .pin { width: 9px; height: 9px; border-radius: 50%; background: var(--brand); flex: none; }
+    .dist__note { margin-top: 22px; padding: 18px 22px; background: #fff5df; border-radius: var(--r-md); color: var(--brand-dark); font-weight: 600; font-size: .96rem; }
+
+    /* Choose (wybor) - alternating list */
+    .choose { display: grid; gap: 16px; max-width: 860px; margin-inline: auto; }
+    .crow { display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 26px 28px; transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+    .crow:hover { transform: translateY(-3px); box-shadow: var(--sh-md); }
+    .crow__ic { width: 54px; height: 54px; border-radius: 15px; background: var(--navy); color: var(--brand); display: grid; place-items: center; flex: none; }
+    .crow__ic svg { width: 26px; height: 26px; }
+    .crow h3 { font-weight: 700; font-size: 1.2rem; margin-bottom: 5px; }
+    .crow p { color: var(--txt-soft); font-size: .97rem; }
 
     /* Recommendation */
-    .rec__box { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-xl); padding: 50px; overflow: hidden; box-shadow: var(--sh-md); }
-    .rec__box::before { content: ""; position: absolute; right: -120px; bottom: -120px; width: 380px; height: 380px; background: radial-gradient(circle, rgba(254,169,0,.16), rgba(254,169,0,0) 65%); }
-    .rec__in { position: relative; z-index: 1; display: grid; grid-template-columns: 1.3fr 1fr; gap: 44px; align-items: center; }
-    .rec h2 { font-family: var(--font-display); font-weight: 800; color: var(--ink); font-size: clamp(1.7rem, 1rem + 2.2vw, 2.5rem); line-height: 1.06; letter-spacing: -.02em; }
-    .rec p { color: var(--txt-soft); margin-top: 14px; }
-    .rec__name { font-family: var(--font-display); font-weight: 800; color: var(--go-deep); }
-    .rec__panel { background: var(--ink); color: #fff; border-radius: var(--r-lg); padding: 32px; }
-    .rec__panel ul { list-style: none; margin: 0 0 22px; }
-    .rec__panel li { display: flex; align-items: flex-start; gap: 11px; padding: 8px 0; font-size: .98rem; color: #e6e7dd; }
-    .rec__panel li svg { width: 20px; height: 20px; color: var(--road); flex: none; margin-top: 1px; }
-    .rec__panel .btn { width: 100%; }
+    .rec__box { display: grid; grid-template-columns: 1.15fr .85fr; gap: 0; border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--sh-lg); border: 1px solid var(--line); }
+    .rec__left { background: var(--surface); padding: 48px 46px; }
+    .rec__logo-plate { display: inline-flex; background: var(--navy); border-radius: 14px; padding: 14px 20px; margin-bottom: 24px; }
+    .rec__logo-plate img { height: 40px; width: auto; }
+    .rec h2 { font-weight: 800; font-size: clamp(1.6rem, 1rem + 1.9vw, 2.2rem); line-height: 1.1; }
+    .rec h2 .name { color: var(--brand-dark); }
+    .rec p { color: var(--txt-soft); margin-top: 14px; font-size: 1.02rem; }
+    .rec__right { background: var(--navy); color: #fff; padding: 44px 40px; display: flex; flex-direction: column; justify-content: center; }
+    .rec__right ul { list-style: none; margin-bottom: 24px; }
+    .rec__right li { display: flex; align-items: flex-start; gap: 12px; padding: 9px 0; font-size: 1rem; color: #e6eaf1; }
+    .rec__right li svg { width: 21px; height: 21px; color: var(--brand); flex: none; margin-top: 1px; }
+    .rec__right .btn { width: 100%; }
 
     /* FAQ */
     .faq__list { max-width: 840px; margin-inline: auto; }
-    .faq__item { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); margin-bottom: 14px; overflow: hidden; transition: border-color .25s var(--ease); }
-    .faq__item.open { border-color: var(--go); }
-    .faq__q { width: 100%; text-align: left; background: none; border: 0; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 22px 24px; font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--ink); }
-    .faq__q .ic { position: relative; flex: none; width: 30px; height: 30px; border-radius: 9px; background: var(--paper-2); display: grid; place-items: center; transition: background .25s var(--ease), transform .3s var(--ease); }
-    .faq__q .ic::before, .faq__q .ic::after { content: ""; position: absolute; background: var(--ink); border-radius: 2px; transition: opacity .25s var(--ease), background .25s; }
+    .faq__item { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); margin-bottom: 13px; overflow: hidden; transition: border-color .25s var(--ease), box-shadow .25s var(--ease); }
+    .faq__item.open { border-color: var(--brand); box-shadow: var(--sh-sm); }
+    .faq__q { width: 100%; text-align: left; background: none; border: 0; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 21px 24px; font-family: var(--font-display); font-weight: 700; font-size: 1.08rem; color: var(--ink); }
+    .faq__q .ic { position: relative; flex: none; width: 30px; height: 30px; border-radius: 9px; background: #eef1f6; display: grid; place-items: center; transition: background .25s var(--ease), transform .3s var(--ease); }
+    .faq__q .ic::before, .faq__q .ic::after { content: ""; position: absolute; background: var(--navy); border-radius: 2px; transition: opacity .25s var(--ease), background .25s; }
     .faq__q .ic::before { width: 13px; height: 2.4px; } .faq__q .ic::after { width: 2.4px; height: 13px; }
-    .faq__item.open .faq__q .ic { background: var(--go); transform: rotate(90deg); }
-    .faq__item.open .faq__q .ic::before { opacity: 0; } .faq__item.open .faq__q .ic::after { background: #fff; }
+    .faq__item.open .faq__q .ic { background: var(--brand); transform: rotate(90deg); }
+    .faq__item.open .faq__q .ic::before { opacity: 0; } .faq__item.open .faq__q .ic::after { background: var(--navy); }
     .faq__a { max-height: 0; overflow: hidden; transition: max-height .4s var(--ease-io); }
-    .faq__a-in { padding: 0 24px 24px; color: var(--txt-soft); max-width: 72ch; }
-    .faq__a-in a { color: var(--go-deep); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    .faq__a-in { padding: 0 24px 23px; color: var(--txt-soft); max-width: 72ch; }
+    .faq__a-in a { color: var(--brand-dark); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 
-    /* CTA band */
-    .cta { padding-bottom: 92px; }
-    .cta__box { background: var(--ink); border-radius: var(--r-xl); padding: 62px 54px; display: flex; align-items: center; justify-content: space-between; gap: 38px; flex-wrap: wrap; position: relative; overflow: hidden; }
-    .cta__box::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0 40px, transparent 40px 80px); pointer-events: none; }
+    /* CTA */
+    .cta__box { background: var(--brand); border-radius: var(--r-xl); padding: 56px 52px; display: flex; align-items: center; justify-content: space-between; gap: 36px; flex-wrap: wrap; position: relative; overflow: hidden; }
+    .cta__box::after { content: ""; position: absolute; right: -80px; bottom: -110px; width: 340px; height: 340px; background: radial-gradient(circle, rgba(255,255,255,.22), transparent 66%); }
     .cta__txt { position: relative; z-index: 1; max-width: 600px; }
-    .cta h2 { font-family: var(--font-display); font-weight: 800; color: #fff; font-size: clamp(1.7rem, 1rem + 2.4vw, 2.6rem); line-height: 1.04; letter-spacing: -.02em; }
-    .cta p { color: rgba(255,255,255,.9); margin-top: 12px; font-weight: 500; }
+    .cta h2 { color: var(--navy); font-weight: 800; font-size: clamp(1.6rem, 1rem + 2.2vw, 2.4rem); line-height: 1.06; }
+    .cta p { color: #6a4e05; margin-top: 11px; font-weight: 500; }
     .cta .btn { position: relative; z-index: 1; }
 
     /* Footer */
-    .footer { background: var(--ink-2); color: #8793a6; padding: 56px 0 36px; }
+    .footer { background: var(--navy-dark); color: #9aa6ba; padding: 54px 0 34px; }
     .footer__top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
-    .footer .brand__txt b { color: #fff; } .footer .brand__txt span { color: #79879e; }
+    .footer .brand__txt b { color: #fff; } .footer .brand__txt span { color: #7f8ba1; }
     .footer__desc { max-width: 380px; margin-top: 16px; font-size: .92rem; line-height: 1.6; }
     .footer__links { display: flex; gap: 56px; flex-wrap: wrap; }
-    .footer__col p { color: #fff; font-weight: 700; font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 13px; font-family: var(--font-body); }
+    .footer__col p { color: #fff; font-weight: 700; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 13px; }
     .footer__col a { display: block; font-size: .92rem; padding: 5px 0; transition: color .2s var(--ease); }
-    .footer__col a:hover { color: var(--road); }
-    .footer__bottom { margin-top: 42px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.08); font-size: .82rem; color: #62708a; }
+    .footer__col a:hover { color: var(--brand); }
+    .footer__bottom { margin-top: 40px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.08); font-size: .82rem; color: #6b7791; }
 
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
     .reveal.in { opacity: 1; transform: none; }
-    .reveal[data-d="1"]{transition-delay:.08s} .reveal[data-d="2"]{transition-delay:.16s} .reveal[data-d="3"]{transition-delay:.24s}
+    .reveal[data-d="1"]{transition-delay:.07s} .reveal[data-d="2"]{transition-delay:.14s} .reveal[data-d="3"]{transition-delay:.21s}
 
-    @media (max-width: 940px) {
-      .hero__grid { grid-template-columns: 1fr; gap: 30px; }
-      .plate-stage { min-height: 300px; }
+    @media (max-width: 960px) {
+      .hero__grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero__badge--1 { left: 8px; } .hero__badge--2 { right: 8px; }
       .stats { grid-template-columns: 1fr 1fr; }
-      .stat:nth-child(2) { border-right: 0; }
-      .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--line); }
-      .steps { grid-template-columns: 1fr; }
+      .flow, .icards { grid-template-columns: 1fr; }
+      .compare { grid-template-columns: 1fr; }
       .dist__grid { grid-template-columns: 1fr; gap: 30px; }
-      .rec__in { grid-template-columns: 1fr; gap: 30px; }
+      .rec__box { grid-template-columns: 1fr; }
     }
     @media (max-width: 680px) {
       .nav { display: none; }
       .stats { grid-template-columns: 1fr; }
-      .stat { border-right: 0; border-bottom: 1px solid var(--line); }
-      .stat:last-child { border-bottom: 0; }
-      .rec__box { padding: 32px 22px; }
+      .hero__cta .btn { width: 100%; }
+      .rec__left, .rec__right { padding: 34px 26px; }
       .cta__box { padding: 40px 28px; }
-      .dist__tags { gap: 9px; }
     }
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
-      .marquee__row, .pchip { animation: none !important; }
+      .hero__badge { animation: none !important; }
       html { scroll-behavior: auto; }
     }
   </style>
@@ -273,7 +302,7 @@
     <div class="wrap header__in">
       <a href="#top" class="brand" aria-label="Prawo jazdy B Wrocław">
         <span class="brand__mark">B</span>
-        <span class="brand__txt"><b>Prawo Jazdy B</b><span>Wrocław</span></span>
+        <span class="brand__txt"><b>Prawo jazdy B</b><span>Wrocław</span></span>
       </a>
       <nav class="nav" aria-label="Nawigacja">
         <a href="#start">Jak zacząć</a>
@@ -284,7 +313,7 @@
         <a href="#faq">FAQ</a>
       </nav>
       <div class="header__cta">
-        <a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-b/" class="btn btn--go">Znajdź kurs</a>
+        <a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-b/" class="btn btn--gold"><span>Znajdź kurs</span></a>
       </div>
     </div>
   </header>
@@ -292,49 +321,46 @@
   <main id="top">
     <!-- HERO -->
     <section class="hero">
-      <div class="wrap hero__grid">
-        <div>
-          <span class="chip reveal"><span class="dot"></span>Niezależny przewodnik &middot; Wrocław</span>
-          <h1 class="reveal" data-d="1">Zrób <span class="mark">prawo jazdy kat. B</span> we Wrocławiu</h1>
-          <p class="lead reveal" data-d="2">Bez błądzenia po forach. Pokazujemy cały proces krok po kroku: od profilu PKK, przez kurs i jazdy, po egzamin w DORD. Plus konkretny typ na dobrą szkołę w mieście.</p>
-          <div class="hero__cta reveal" data-d="2">
-            <a href="#szkola" class="btn btn--go">Zobacz polecaną szkołę
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a href="#start" class="btn btn--out">Od czego zacząć</a>
-          </div>
-          <div class="hero__trust reveal" data-d="3">
-            <span>Kurs od 17 lat i 9 mc</span><span class="sep"></span>
-            <span>Egzamin: DORD Wrocław</span><span class="sep"></span>
-            <span>Auta do 3,5 t</span>
-          </div>
-        </div>
-        <div class="plate-stage reveal" data-d="2">
-          <div class="plate">
-            <b>DW</b><span class="catb">B</span>
-          </div>
-          <div class="pchip pchip--1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg></span><span><small>Minimum jazd</small>30 godzin</span></div>
-          <div class="pchip pchip--2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><small>Wiek startu</small>17 lat 9 mc</span></div>
-          <div class="pchip pchip--3"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></span><span><small>Egzamin w</small>DORD</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- MARQUEE -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__row">
-        <span>Prawo jazdy kat. B</span><span>Kurs nauki jazdy Wrocław</span><span>Egzamin w DORD</span><span>Plac manewrowy</span><span>Jazdy w mieście</span><span>Skrzynia manualna i automat</span>
-        <span>Prawo jazdy kat. B</span><span>Kurs nauki jazdy Wrocław</span><span>Egzamin w DORD</span><span>Plac manewrowy</span><span>Jazdy w mieście</span><span>Skrzynia manualna i automat</span>
-      </div>
-    </div>
-
-    <!-- STATS -->
-    <section>
       <div class="wrap">
-        <div class="stats reveal">
-          <div class="stat"><b>18<em>+</em></b><span>Tyle lat trzeba mieć, by odebrać prawo jazdy kat. B</span></div>
-          <div class="stat"><b>30<em>h</em></b><span>Minimum godzin jazd z instruktorem według przepisów</span></div>
-          <div class="stat"><b>2<em>cz.</em></b><span>Egzamin państwowy: teoria oraz praktyka</span></div>
-          <div class="stat"><b>3,5<em>t</em></b><span>Dopuszczalna masa auta, którym pojedziesz na kat. B</span></div>
+        <div class="hero__grid">
+          <div>
+            <div class="hero__pills reveal">
+              <span class="pill pill--gold"><span class="dot"></span>Niezależny przewodnik</span>
+              <span class="pill pill--soft"><span class="dot"></span>Wrocław</span>
+            </div>
+            <h1 class="reveal" data-d="1">Zrób <span class="mark">prawo jazdy kat. B</span> we Wrocławiu</h1>
+            <p class="lead reveal" data-d="2">Bez błądzenia po forach. Pokazujemy cały proces krok po kroku: od profilu PKK, przez kurs i jazdy, po egzamin w DORD. Plus konkretny typ na dobrą szkołę w mieście.</p>
+            <div class="hero__cta reveal" data-d="2">
+              <a href="#szkola" class="btn btn--gold"><span>Zobacz polecaną szkołę</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+              <a href="#start" class="btn btn--out"><span>Od czego zacząć</span></a>
+            </div>
+            <ul class="hero__trust reveal" data-d="3">
+              <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Kurs możesz zacząć od 17 lat i 9 miesięcy</li>
+              <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Egzamin państwowy w DORD Wrocław</li>
+              <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Manual albo automat, auta do 3,5 t</li>
+            </ul>
+          </div>
+          <div class="hero__media reveal" data-d="2">
+            <div class="hero__photo"><img src="assets/hero-kat-b.webp" alt="Auto szkoły jazdy Akademia Dobrej Jazdy na tle wrocławskiej architektury" loading="eager" width="800" height="600"></div>
+            <div class="hero__badge hero__badge--1">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg></span>
+              <span><small>Minimum jazd</small>30 godzin</span>
+            </div>
+            <div class="hero__badge hero__badge--2">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></span>
+              <span><small>Egzamin w</small>DORD Wrocław</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- STAT STRIP -->
+        <div class="stripe reveal">
+          <div class="stats">
+            <div class="stat"><b>17,9</b><span>Wiek startu kursu: 17 lat i 9 miesięcy</span></div>
+            <div class="stat"><b>30 h</b><span>Minimum godzin jazd z instruktorem</span></div>
+            <div class="stat"><b>2 cz.</b><span>Egzamin państwowy: teoria i praktyka</span></div>
+            <div class="stat"><b>3,5 t</b><span>Dopuszczalna masa auta na kat. B</span></div>
+          </div>
         </div>
       </div>
     </section>
@@ -347,28 +373,32 @@
           <h2 class="title">Od czego zacząć kurs</h2>
           <p class="lead">Trzy formalności do ogarnięcia w kilka dni. Dopiero z nimi szkoła zapisze Cię na kurs.</p>
         </div>
-        <div class="steps">
-          <div class="step reveal" data-d="1"><div class="step__n">01</div><h3>Profil PKK</h3><p>Złóż wniosek o Profil Kandydata na Kierowcę w wydziale komunikacji (we Wrocławiu online lub osobiście). To Twój numer startowy.</p></div>
-          <div class="step reveal" data-d="2"><div class="step__n">02</div><h3>Badanie lekarskie</h3><p>Orzeczenie od uprawnionego lekarza potwierdza brak przeciwwskazań do jazdy. Zwykle bez kolejki, od ręki.</p></div>
-          <div class="step reveal" data-d="3"><div class="step__n">03</div><h3>Wybór szkoły</h3><p>Patrz na zdawalność, instruktorów i to, czy plac oraz jazdy są w rejonie, w którym potem zdasz egzamin.</p></div>
+        <div class="flow">
+          <div class="fstep reveal" data-d="1"><div class="fstep__n">1</div><h3>Profil PKK</h3><p>Złóż wniosek o Profil Kandydata na Kierowcę w wydziale komunikacji (we Wrocławiu online lub osobiście). To Twój numer startowy.</p></div>
+          <div class="fstep reveal" data-d="2"><div class="fstep__n">2</div><h3>Badanie lekarskie</h3><p>Orzeczenie od uprawnionego lekarza potwierdza brak przeciwwskazań do jazdy. Zwykle bez kolejki, od ręki.</p></div>
+          <div class="fstep reveal" data-d="3"><div class="fstep__n">3</div><h3>Wybór szkoły</h3><p>Patrz na zdawalność, instruktorów i to, czy plac oraz jazdy są w rejonie, w którym potem zdasz egzamin.</p></div>
         </div>
       </div>
     </section>
 
     <!-- ROADMAP -->
-    <section id="droga" class="road">
+    <section id="droga" style="padding-top:0;">
       <div class="wrap">
-        <div class="head center reveal">
-          <span class="kicker">Krok po kroku</span>
-          <h2 class="title">Cała droga do prawka kat. B</h2>
-          <p class="lead">Od formalności do odbioru dokumentu. Sercem procesu jest kurs, bo to on decyduje, jak pewnie czujesz się za kierownicą.</p>
-        </div>
-        <div class="roadway">
-          <div class="stop reveal"><div class="stop__n">1</div><div class="stop__card"><h3>Profil PKK i badania</h3><p>Zakładasz profil kandydata i robisz badanie lekarskie. To przepustka do zapisu na kurs.</p></div></div>
-          <div class="stop stop--go reveal"><div class="stop__n">2</div><div class="stop__card"><h3>Kurs: teoria i praktyka</h3><p>Zajęcia teoretyczne plus jazdy z instruktorem. Tu spędzisz najwięcej czasu i to ten etap robi z Ciebie kierowcę.</p><div class="stop__cta"><a href="#szkola" class="btn btn--go">Zobacz polecaną szkołę<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div></div>
-          <div class="stop reveal"><div class="stop__n">3</div><div class="stop__card"><h3>Egzamin wewnętrzny</h3><p>Szkoła sprawdza Twoją gotowość przed egzaminem państwowym, w warunkach zbliżonych do tych w ośrodku.</p></div></div>
-          <div class="stop reveal"><div class="stop__n">4</div><div class="stop__card"><h3>Egzamin państwowy w DORD</h3><p>Część teoretyczna i praktyczna w Dolnośląskim Ośrodku Ruchu Drogowego przy Łagiewnickiej 12 we Wrocławiu.</p></div></div>
-          <div class="stop reveal"><div class="stop__n">5</div><div class="stop__card"><h3>Odbiór prawa jazdy</h3><p>Po zdanym egzaminie urząd wydaje dokument. Od tej chwili jeździsz samodzielnie.</p></div></div>
+        <div class="road">
+          <div class="wrap road-wrap">
+            <div class="head center reveal" style="margin-inline:auto;">
+              <span class="kicker">Krok po kroku</span>
+              <h2 class="title">Cała droga do prawka kat. B</h2>
+              <p class="lead">Od formalności do odbioru dokumentu. Sercem procesu jest kurs, bo to on decyduje, jak pewnie czujesz się za kierownicą.</p>
+            </div>
+            <div class="roadway">
+              <div class="stop reveal"><div class="stop__n">1</div><div class="stop__card"><h3>Profil PKK i badania</h3><p>Zakładasz profil kandydata i robisz badanie lekarskie. To przepustka do zapisu na kurs.</p></div></div>
+              <div class="stop stop--go reveal"><div class="stop__n">2</div><div class="stop__card"><h3>Kurs: teoria i praktyka</h3><p>Zajęcia teoretyczne plus jazdy z instruktorem. Tu spędzisz najwięcej czasu i to ten etap robi z Ciebie kierowcę.</p><div class="stop__cta"><a href="#szkola" class="btn btn--gold"><span>Zobacz polecaną szkołę</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></div></div>
+              <div class="stop reveal"><div class="stop__n">3</div><div class="stop__card"><h3>Egzamin wewnętrzny</h3><p>Szkoła sprawdza Twoją gotowość przed egzaminem państwowym, w warunkach zbliżonych do tych w ośrodku.</p></div></div>
+              <div class="stop reveal"><div class="stop__n">4</div><div class="stop__card"><h3>Egzamin państwowy w DORD</h3><p>Część teoretyczna i praktyczna w Dolnośląskim Ośrodku Ruchu Drogowego przy Łagiewnickiej 12 we Wrocławiu.</p></div></div>
+              <div class="stop reveal"><div class="stop__n">5</div><div class="stop__card"><h3>Odbiór prawa jazdy</h3><p>Po zdanym egzaminie urząd wydaje dokument. Od tej chwili jeździsz samodzielnie.</p></div></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -381,10 +411,10 @@
           <h2 class="title">Jak wygląda egzamin na kat. B we Wrocławiu</h2>
           <p class="lead">Egzamin ma dwie części: teorię i praktykę. Praktyka zaczyna się na placu manewrowym, a kończy w ruchu miejskim. Poniżej to, co realnie sprawdza egzaminator.</p>
         </div>
-        <div class="steps">
-          <div class="step reveal" data-d="1"><div class="step__n">01</div><h3>Część teoretyczna</h3><p>Test jednokrotnego wyboru na komputerze: pytania z wiedzy podstawowej i specjalistycznej dla kat. B. Zdajesz go przed częścią praktyczną.</p></div>
-          <div class="step reveal" data-d="2"><div class="step__n">02</div><h3>Plac manewrowy</h3><p>Egzaminator sprawdza przygotowanie auta do jazdy, ruszanie oraz jazdę po łuku. To krótka, ale ważna rozgrzewka przed wyjazdem w miasto.</p></div>
-          <div class="step reveal" data-d="3"><div class="step__n">03</div><h3>Jazda w mieście</h3><p>Najdłuższa część: jazda po wyznaczonych trasach we Wrocławiu. Liczy się płynność, obserwacja, pierwszeństwo i reakcja na realny ruch.</p></div>
+        <div class="icards">
+          <div class="icard reveal" data-d="1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></div><h3>Część teoretyczna</h3><p>Test jednokrotnego wyboru na komputerze: pytania z wiedzy podstawowej i specjalistycznej dla kat. B. Zdajesz go przed częścią praktyczną.</p></div>
+          <div class="icard reveal" data-d="2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h16M6 17l1.5-5h9L18 17M7 12l1-4h8l1 4"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></svg></div><h3>Plac manewrowy</h3><p>Egzaminator sprawdza przygotowanie auta do jazdy, ruszanie oraz jazdę po łuku. To krótka, ale ważna rozgrzewka przed wyjazdem w miasto.</p></div>
+          <div class="icard reveal" data-d="3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg></div><h3>Jazda w mieście</h3><p>Najdłuższa część: jazda po wyznaczonych trasach we Wrocławiu. Liczy się płynność, obserwacja, pierwszeństwo i reakcja na realny ruch.</p></div>
         </div>
       </div>
     </section>
@@ -397,9 +427,9 @@
           <h2 class="title">Manual czy automat?</h2>
           <p class="lead">Wybór skrzyni decyduje o tym, jakimi autami będziesz mógł jeździć po egzaminie. Krótko o różnicy.</p>
         </div>
-        <div class="steps steps--2">
-          <div class="step reveal" data-d="1"><h3>Skrzynia manualna</h3><p>Uprawnia do wszystkich aut kat. B, manualnych i automatycznych. Do opanowania jest sprzęgło i zmiana biegów, ale zyskujesz pełną swobodę przy wyborze samochodu, także w wypożyczalni czy służbowego.</p></div>
-          <div class="step reveal" data-d="2"><h3>Skrzynia automatyczna</h3><p>Prostsza nauka i często spokojniejszy egzamin, bo odpada obsługa sprzęgła. Prawo jazdy obejmuje wtedy wyłącznie auta automatyczne. Dobry wybór, jeśli planujesz jeździć tylko takim samochodem.</p></div>
+        <div class="compare">
+          <div class="ccard ccard--a reveal" data-d="1"><span class="ccard__tag">Pełne uprawnienia</span><h3>Skrzynia manualna</h3><p>Uprawnia do wszystkich aut kat. B, manualnych i automatycznych. Do opanowania jest sprzęgło i zmiana biegów, ale zyskujesz pełną swobodę przy wyborze samochodu, także w wypożyczalni czy służbowego.</p></div>
+          <div class="ccard ccard--b reveal" data-d="2"><span class="ccard__tag">Prostsza nauka</span><h3>Skrzynia automatyczna</h3><p>Prostsza nauka i często spokojniejszy egzamin, bo odpada obsługa sprzęgła. Prawo jazdy obejmuje wtedy wyłącznie auta automatyczne. Dobry wybór, jeśli planujesz jeździć tylko takim samochodem.</p></div>
         </div>
       </div>
     </section>
@@ -407,68 +437,66 @@
     <!-- DISTRICTS -->
     <section id="dzielnice">
       <div class="wrap dist__grid">
-        <div class="reveal">
+        <div class="dist__map reveal"><img src="assets/lokalizacje-mapa.webp" alt="Mapa lokalizacji nauki jazdy we Wrocławiu" loading="lazy"></div>
+        <div class="reveal" data-d="1">
           <span class="kicker">Nauka jazdy w mieście</span>
           <h2 class="title" style="margin-top:14px;">Wrocław dzielnica po dzielnicy</h2>
-          <p class="lead" style="margin-top:16px;">Egzaminu nie zdaje się w próżni. Liczy się to, czy jeździsz po trasach i skrzyżowaniach zbliżonych do egzaminacyjnych. Dlatego warto szkolić się w rejonie, w którym później podejdziesz do egzaminu.</p>
+          <p class="lead" style="margin-top:15px;">Egzaminu nie zdaje się w próżni. Liczy się to, czy jeździsz po trasach i skrzyżowaniach zbliżonych do egzaminacyjnych. Dlatego warto szkolić się w rejonie, w którym później podejdziesz do egzaminu.</p>
+          <div class="dist__tags">
+            <span class="dtag"><span class="pin"></span>Grunwald</span>
+            <span class="dtag"><span class="pin"></span>Psie Pole</span>
+            <span class="dtag"><span class="pin"></span>Brochów</span>
+            <span class="dtag"><span class="pin"></span>Krzyki</span>
+            <span class="dtag"><span class="pin"></span>Fabryczna</span>
+            <span class="dtag"><span class="pin"></span>Stare Miasto</span>
+            <span class="dtag"><span class="pin"></span>Okolice DORD</span>
+          </div>
           <div class="dist__note">Egzamin państwowy dla Wrocławia odbywa się w DORD przy ul. Łagiewnickiej 12. Warto znać okoliczne trasy.</div>
-        </div>
-        <div class="dist__tags reveal" data-d="1">
-          <span class="dtag"><span class="pin"></span>Grunwald</span>
-          <span class="dtag"><span class="pin"></span>Psie Pole</span>
-          <span class="dtag"><span class="pin"></span>Brochów</span>
-          <span class="dtag"><span class="pin"></span>Krzyki</span>
-          <span class="dtag"><span class="pin"></span>Fabryczna</span>
-          <span class="dtag"><span class="pin"></span>Stare Miasto</span>
-          <span class="dtag"><span class="pin"></span>Okolice DORD</span>
         </div>
       </div>
     </section>
 
     <!-- WYBOR SZKOLY -->
-    <section id="wybor">
+    <section id="wybor" style="padding-top:0;">
       <div class="wrap">
-        <div class="head center reveal">
+        <div class="head center reveal" style="margin-inline:auto;">
           <span class="kicker">Zanim się zapiszesz</span>
           <h2 class="title">Jak wybrać szkołę jazdy we Wrocławiu</h2>
           <p class="lead">Cena to nie wszystko. O tym, czy zdasz za pierwszym razem i będziesz pewnie jeździć, decyduje kilka innych rzeczy.</p>
         </div>
-        <div class="steps">
-          <div class="step reveal" data-d="1"><div class="step__n">01</div><h3>Zdawalność i opinie</h3><p>Sprawdź, jak wypada szkoła na tle miasta i co piszą kursanci. Realne opinie mówią więcej niż hasła reklamowe.</p></div>
-          <div class="step reveal" data-d="2"><div class="step__n">02</div><h3>Instruktorzy i auta</h3><p>Stały instruktor, spokojne podejście i auto podobne do egzaminacyjnego robią ogromną różnicę w komforcie nauki.</p></div>
-          <div class="step reveal" data-d="3"><div class="step__n">03</div><h3>Lokalizacja jazd</h3><p>Najlepiej, gdy jeździsz po trasach zbliżonych do egzaminacyjnych i w rejonie, w którym potem podejdziesz do egzaminu w DORD.</p></div>
+        <div class="choose">
+          <div class="crow reveal"><div class="crow__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg></div><div><h3>Zdawalność i opinie</h3><p>Sprawdź, jak wypada szkoła na tle miasta i co piszą kursanci. Realne opinie mówią więcej niż hasła reklamowe.</p></div></div>
+          <div class="crow reveal"><div class="crow__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div><div><h3>Instruktorzy i auta</h3><p>Stały instruktor, spokojne podejście i auto podobne do egzaminacyjnego robią ogromną różnicę w komforcie nauki.</p></div></div>
+          <div class="crow reveal"><div class="crow__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div><h3>Lokalizacja jazd</h3><p>Najlepiej, gdy jeździsz po trasach zbliżonych do egzaminacyjnych i w rejonie, w którym potem podejdziesz do egzaminu w DORD.</p></div></div>
         </div>
       </div>
     </section>
 
     <!-- RECOMMENDATION -->
-    <section id="szkola" class="rec">
+    <section id="szkola">
       <div class="wrap">
         <div class="rec__box reveal">
-          <div class="rec__in">
-            <div>
-              <span class="kicker">Nasz typ na szkołę</span>
-              <h2 style="margin-top:14px;">Dobrym wyborem we Wrocławiu jest <span class="rec__name">Akademia Dobrej Jazdy</span></h2>
-              <p>Szukasz konkretu zamiast przeklikiwania dziesiątek ofert? Akademia Dobrej Jazdy prowadzi kursy kat. B we Wrocławiu, w manualu i na automacie. Szczegóły, ceny i terminy znajdziesz bezpośrednio u nich.</p>
-            </div>
-            <div class="rec__panel">
-              <ul>
-                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Kurs kat. B: teoria i praktyka</li>
-                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Wariant manualny i automat</li>
-                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Jazdy po Wrocławiu</li>
-              </ul>
-              <a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-b/" class="btn btn--go">Sprawdź kurs kat. B
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            </div>
+          <div class="rec__left">
+            <span class="rec__logo-plate"><img src="assets/logo-adj.png" alt="Akademia Dobrej Jazdy Wrocław"></span>
+            <h2 class="rec">Dobrym wyborem we Wrocławiu jest <span class="name">Akademia Dobrej Jazdy</span></h2>
+            <p>Szukasz konkretu zamiast przeklikiwania dziesiątek ofert? Akademia Dobrej Jazdy prowadzi kursy kat. B we Wrocławiu, w manualu i na automacie. Szczegóły, ceny i terminy znajdziesz bezpośrednio u nich.</p>
+          </div>
+          <div class="rec__right">
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Kurs kat. B: teoria i praktyka</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Wariant manualny i automat</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Jazdy po Wrocławiu</li>
+            </ul>
+            <a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-b/" class="btn btn--gold"><span>Sprawdź kurs kat. B</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section id="faq">
+    <section id="faq" style="padding-top:0;">
       <div class="wrap">
-        <div class="head center reveal">
+        <div class="head center reveal" style="margin-inline:auto;">
           <span class="kicker">Najczęstsze pytania</span>
           <h2 class="title">Prawo jazdy kat. B Wrocław: FAQ</h2>
         </div>
@@ -486,15 +514,14 @@
     </section>
 
     <!-- CTA -->
-    <section class="cta">
+    <section style="padding-top:0; padding-bottom:92px;">
       <div class="wrap">
         <div class="cta__box reveal">
           <div class="cta__txt">
             <h2>Gotowy, żeby usiąść za kierownicą?</h2>
             <p>Masz cały plan na prawo jazdy kat. B we Wrocławiu. Następny ruch to wybór kursu i zapis.</p>
           </div>
-          <a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-b/" class="btn btn--go">Sprawdź polecany kurs
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-b/" class="btn btn--navy"><span>Sprawdź polecany kurs</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
         </div>
       </div>
     </section>
@@ -506,7 +533,7 @@
         <div>
           <div class="brand">
             <span class="brand__mark">B</span>
-            <span class="brand__txt"><b>Prawo Jazdy B</b><span>Wrocław</span></span>
+            <span class="brand__txt"><b>Prawo jazdy B</b><span>Wrocław</span></span>
           </div>
           <p class="footer__desc">Niezależny przewodnik informacyjny o kursie prawa jazdy kategorii B we Wrocławiu. Oferty, ceny i zapisy prowadzą szkoły jazdy.</p>
         </div>
