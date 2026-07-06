@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prawo jazdy kat. B Wrocław - niezależny przewodnik po kursie i egzaminie</title>
   <meta name="description" content="Jak zrobić prawo jazdy kat. B we Wrocławiu: od czego zacząć, ile trwa kurs, egzamin w DORD, dzielnice i polecana szkoła jazdy. Niezależny przewodnik krok po kroku.">
-  <!-- TODO po wyborze domeny: self-canonical na finalny URL satelity (NIE na naukajazdy.wroc.pl) -->
-  <!-- <link rel="canonical" href="https://DOMENA.pl/"> -->
+  <link rel="canonical" href="https://siwson1.github.io/prawo-jazdy-kat-b-wroclaw/">
+  <!-- Po wyborze docelowej domeny satelity: podmien canonical na finalny URL (NIE na naukajazdy.wroc.pl) -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Prawo jazdy kat. B Wrocław - niezależny przewodnik">
   <meta property="og:description" content="Kurs na kat. B we Wrocławiu krok po kroku: start, egzamin w DORD, dzielnice, polecana szkoła.">
@@ -140,6 +140,7 @@
 
     /* Start steps */
     .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .steps--2 { grid-template-columns: 1fr 1fr; }
     .step { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); padding: 30px 26px; transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
     .step:hover { transform: translateY(-5px); box-shadow: var(--sh-md); }
     .step__n { font-family: var(--font-display); font-weight: 800; font-size: 2.6rem; color: var(--paper-2); line-height: 1; -webkit-text-stroke: 1.5px var(--go); color: transparent; }
@@ -248,6 +249,22 @@
       html { scroll-behavior: auto; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Ile trwa kurs na prawo jazdy kategorii B?","acceptedAnswer":{"@type":"Answer","text":"Przepisy okreslaja minimum godzin teorii i praktyki, ale realny czas zalezy od tempa jazd i dostepnosci terminow. Jedni koncza w kilka tygodni, inni rozkladaja nauke na kilka miesiecy. Najwiecej zalezy od tego, jak czesto jezdzisz."}},
+      {"@type":"Question","name":"Ile kosztuje kurs kat. B we Wroclawiu?","acceptedAnswer":{"@type":"Answer","text":"Cena zalezy od szkoly, pakietu i formy platnosci. Aktualny cennik sprawdzisz bezposrednio u wybranej szkoly. Do kosztu kursu dochodza oplaty za egzamin panstwowy, ustalane odrebnymi przepisami."}},
+      {"@type":"Question","name":"Od ilu lat mozna robic prawo jazdy kat. B?","acceptedAnswer":{"@type":"Answer","text":"Kurs mozesz zaczac na 3 miesiace przed osiemnastka, czyli juz w wieku 17 lat i 9 miesiecy. Prawo jazdy odbierzesz po ukonczeniu 18 lat i zdaniu egzaminu."}},
+      {"@type":"Question","name":"Skrzynia manualna czy automatyczna?","acceptedAnswer":{"@type":"Answer","text":"Kurs na manualu daje uprawnienia na oba typy aut. Kurs i egzamin na automacie bywaja latwiejsze, ale ograniczaja prawo jazdy do pojazdow automatycznych."}},
+      {"@type":"Question","name":"Gdzie zdaje sie egzamin na kat. B we Wroclawiu?","acceptedAnswer":{"@type":"Answer","text":"Egzamin panstwowy zdasz w Dolnoslaskim Osrodku Ruchu Drogowego (DORD) we Wroclawiu. Sklada sie z czesci teoretycznej oraz praktycznej na placu manewrowym i w ruchu miejskim."}},
+      {"@type":"Question","name":"Ile razy mozna podchodzic do egzaminu na prawo jazdy?","acceptedAnswer":{"@type":"Answer","text":"Liczba podejsc nie jest ograniczona. Kazde kolejne podejscie do egzaminu teoretycznego lub praktycznego wiaze sie z osobna oplata, wnoszona w osrodku egzaminacyjnym."}},
+      {"@type":"Question","name":"Czy egzamin praktyczny zdaje sie autem szkoly?","acceptedAnswer":{"@type":"Answer","text":"Domyslnie egzamin praktyczny odbywa sie pojazdem osrodka egzaminacyjnego. Na wniosek mozna podejsc pojazdem szkoly jazdy, jesli spelnia wymagania i szkola to udostepnia."}},
+      {"@type":"Question","name":"Co zabrac na egzamin panstwowy?","acceptedAnswer":{"@type":"Answer","text":"Najwazniejszy jest wazny dokument tozsamosci ze zdjeciem. Reszte, w tym potwierdzenie oplaty i termin, ustalasz wczesniej z osrodkiem egzaminacyjnym."}}
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -260,8 +277,9 @@
       <nav class="nav" aria-label="Nawigacja">
         <a href="#start">Jak zacząć</a>
         <a href="#droga">Droga do prawka</a>
+        <a href="#egzamin">Egzamin</a>
         <a href="#dzielnice">Dzielnice</a>
-        <a href="#szkola">Polecana szkoła</a>
+        <a href="#wybor">Wybór szkoły</a>
         <a href="#faq">FAQ</a>
       </nav>
       <div class="header__cta">
@@ -354,6 +372,37 @@
       </div>
     </section>
 
+    <!-- EGZAMIN -->
+    <section id="egzamin">
+      <div class="wrap">
+        <div class="head reveal">
+          <span class="kicker">Egzamin państwowy</span>
+          <h2 class="title">Jak wygląda egzamin na kat. B we Wrocławiu</h2>
+          <p class="lead">Egzamin ma dwie części: teorię i praktykę. Praktyka zaczyna się na placu manewrowym, a kończy w ruchu miejskim. Poniżej to, co realnie sprawdza egzaminator.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal" data-d="1"><div class="step__n">01</div><h3>Część teoretyczna</h3><p>Test jednokrotnego wyboru na komputerze: pytania z wiedzy podstawowej i specjalistycznej dla kat. B. Zdajesz go przed częścią praktyczną.</p></div>
+          <div class="step reveal" data-d="2"><div class="step__n">02</div><h3>Plac manewrowy</h3><p>Egzaminator sprawdza przygotowanie auta do jazdy, ruszanie oraz jazdę po łuku. To krótka, ale ważna rozgrzewka przed wyjazdem w miasto.</p></div>
+          <div class="step reveal" data-d="3"><div class="step__n">03</div><h3>Jazda w mieście</h3><p>Najdłuższa część: jazda po wyznaczonych trasach we Wrocławiu. Liczy się płynność, obserwacja, pierwszeństwo i reakcja na realny ruch.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MANUAL VS AUTOMAT -->
+    <section id="skrzynia" style="padding-top:0;">
+      <div class="wrap">
+        <div class="head reveal">
+          <span class="kicker">Częsty dylemat</span>
+          <h2 class="title">Manual czy automat?</h2>
+          <p class="lead">Wybór skrzyni decyduje o tym, jakimi autami będziesz mógł jeździć po egzaminie. Krótko o różnicy.</p>
+        </div>
+        <div class="steps steps--2">
+          <div class="step reveal" data-d="1"><h3>Skrzynia manualna</h3><p>Uprawnia do wszystkich aut kat. B, manualnych i automatycznych. Do opanowania jest sprzęgło i zmiana biegów, ale zyskujesz pełną swobodę przy wyborze samochodu, także w wypożyczalni czy służbowego.</p></div>
+          <div class="step reveal" data-d="2"><h3>Skrzynia automatyczna</h3><p>Prostsza nauka i często spokojniejszy egzamin, bo odpada obsługa sprzęgła. Prawo jazdy obejmuje wtedy wyłącznie auta automatyczne. Dobry wybór, jeśli planujesz jeździć tylko takim samochodem.</p></div>
+        </div>
+      </div>
+    </section>
+
     <!-- DISTRICTS -->
     <section id="dzielnice">
       <div class="wrap dist__grid">
@@ -371,6 +420,22 @@
           <span class="dtag"><span class="pin"></span>Fabryczna</span>
           <span class="dtag"><span class="pin"></span>Stare Miasto</span>
           <span class="dtag"><span class="pin"></span>Okolice DORD</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- WYBOR SZKOLY -->
+    <section id="wybor">
+      <div class="wrap">
+        <div class="head center reveal">
+          <span class="kicker">Zanim się zapiszesz</span>
+          <h2 class="title">Jak wybrać szkołę jazdy we Wrocławiu</h2>
+          <p class="lead">Cena to nie wszystko. O tym, czy zdasz za pierwszym razem i będziesz pewnie jeździć, decyduje kilka innych rzeczy.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal" data-d="1"><div class="step__n">01</div><h3>Zdawalność i opinie</h3><p>Sprawdź, jak wypada szkoła na tle miasta i co piszą kursanci. Realne opinie mówią więcej niż hasła reklamowe.</p></div>
+          <div class="step reveal" data-d="2"><div class="step__n">02</div><h3>Instruktorzy i auta</h3><p>Stały instruktor, spokojne podejście i auto podobne do egzaminacyjnego robią ogromną różnicę w komforcie nauki.</p></div>
+          <div class="step reveal" data-d="3"><div class="step__n">03</div><h3>Lokalizacja jazd</h3><p>Najlepiej, gdy jeździsz po trasach zbliżonych do egzaminacyjnych i w rejonie, w którym potem podejdziesz do egzaminu w DORD.</p></div>
         </div>
       </div>
     </section>
@@ -412,6 +477,9 @@
           <div class="faq__item"><button class="faq__q" type="button" aria-expanded="false">Od ilu lat można robić prawo jazdy kat. B?<span class="ic"></span></button><div class="faq__a"><div class="faq__a-in">Kurs możesz zacząć na 3 miesiące przed osiemnastką, czyli już w wieku 17 lat i 9 miesięcy. Prawo jazdy odbierzesz po ukończeniu 18 lat i zdaniu egzaminu.</div></div></div>
           <div class="faq__item"><button class="faq__q" type="button" aria-expanded="false">Skrzynia manualna czy automatyczna?<span class="ic"></span></button><div class="faq__a"><div class="faq__a-in">Kurs na manualu daje uprawnienia na oba typy aut. Kurs i egzamin na automacie bywają łatwiejsze, ale ograniczają prawo jazdy do pojazdów automatycznych. Akademia Dobrej Jazdy prowadzi <a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-b-automat/">kurs kat. B również na automacie</a>.</div></div></div>
           <div class="faq__item"><button class="faq__q" type="button" aria-expanded="false">Gdzie zdaje się egzamin na kat. B we Wrocławiu?<span class="ic"></span></button><div class="faq__a"><div class="faq__a-in">Egzamin państwowy zdasz w Dolnośląskim Ośrodku Ruchu Drogowego (DORD) przy ul. Łagiewnickiej 12 we Wrocławiu. Składa się z części teoretycznej oraz praktycznej na placu manewrowym i w ruchu miejskim.</div></div></div>
+          <div class="faq__item"><button class="faq__q" type="button" aria-expanded="false">Ile razy można podchodzić do egzaminu na prawo jazdy?<span class="ic"></span></button><div class="faq__a"><div class="faq__a-in">Liczba podejść nie jest ograniczona. Każde kolejne podejście do egzaminu teoretycznego lub praktycznego wiąże się z osobną opłatą, wnoszoną w ośrodku egzaminacyjnym.</div></div></div>
+          <div class="faq__item"><button class="faq__q" type="button" aria-expanded="false">Czy egzamin praktyczny zdaje się autem szkoły?<span class="ic"></span></button><div class="faq__a"><div class="faq__a-in">Domyślnie egzamin praktyczny odbywa się pojazdem ośrodka egzaminacyjnego. Na wniosek można podejść pojazdem szkoły jazdy, jeśli spełnia wymagania i szkoła to udostępnia.</div></div></div>
+          <div class="faq__item"><button class="faq__q" type="button" aria-expanded="false">Co zabrać na egzamin państwowy?<span class="ic"></span></button><div class="faq__a"><div class="faq__a-in">Najważniejszy jest ważny dokument tożsamości ze zdjęciem. Resztę, w tym potwierdzenie opłaty i termin, ustalasz wcześniej z ośrodkiem egzaminacyjnym.</div></div></div>
         </div>
       </div>
     </section>
@@ -446,7 +514,9 @@
             <p>Przewodnik</p>
             <a href="#start">Jak zacząć</a>
             <a href="#droga">Droga do prawka</a>
+            <a href="#egzamin">Egzamin</a>
             <a href="#dzielnice">Dzielnice</a>
+            <a href="#wybor">Wybór szkoły</a>
             <a href="#faq">FAQ</a>
           </div>
           <div class="footer__col">
