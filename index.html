@@ -12,7 +12,7 @@
   <meta property="og:description" content="Kurs na kat. B we Wrocławiu krok po kroku: start, egzamin w DORD, dzielnice, polecana szkoła.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Work+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --navy: #21314a;
@@ -32,7 +32,7 @@
       --sh-md: 0 2px 6px rgba(33,49,74,.06), 0 14px 30px rgba(33,49,74,.09);
       --sh-lg: 0 8px 24px rgba(33,49,74,.10), 0 30px 64px rgba(33,49,74,.16);
       --sh-brand: 0 10px 26px rgba(254,169,0,.34);
-      --font-display: "Work Sans", Arial, sans-serif;
+      --font-display: "Bricolage Grotesque", "Work Sans", Arial, sans-serif;
       --font-body: "Work Sans", Arial, sans-serif;
       --font-nav: "Roboto", Arial, sans-serif;
       --max-w: 1200px;
@@ -103,8 +103,7 @@
     .hero__grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.02fr .98fr; gap: 54px; align-items: center; }
     .hero__pills { display: flex; gap: 9px; flex-wrap: wrap; margin-bottom: 20px; }
     .hero h1 { font-weight: 800; font-size: clamp(2.3rem, 1rem + 5vw, 4rem); line-height: 1.02; margin-bottom: 20px; }
-    .hero h1 .mark { color: var(--brand-dark); position: relative; white-space: nowrap; }
-    .hero h1 .mark::after { content: ""; position: absolute; left: 0; right: 0; bottom: .05em; height: .12em; background: var(--brand); opacity: .55; border-radius: 3px; }
+    .hero h1 .mark { color: var(--brand-dark); white-space: nowrap; }
     .hero__cta { display: flex; flex-wrap: wrap; gap: 13px; margin: 28px 0 22px; }
     .hero__trust { display: flex; flex-direction: column; gap: 9px; }
     .hero__trust li { display: flex; align-items: center; gap: 10px; font-size: .96rem; font-weight: 500; color: var(--navy-light); list-style: none; }
@@ -118,17 +117,16 @@
     .hero__badge small { display: block; font-size: .68rem; font-weight: 700; color: var(--txt-soft); text-transform: uppercase; letter-spacing: .08em; }
     .hero__badge .ic { width: 34px; height: 34px; border-radius: 10px; background: var(--brand); color: var(--navy); display: grid; place-items: center; flex: none; }
     .hero__badge .ic svg { width: 18px; height: 18px; }
-    .hero__badge--1 { top: 26px; left: -22px; animation: float 6s var(--ease) infinite; }
-    .hero__badge--2 { bottom: 24px; right: -18px; animation: float 7s var(--ease) infinite .5s; }
-    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    .hero__badge--1 { top: 26px; left: -22px; }
+    .hero__badge--2 { bottom: 24px; right: -18px; }
 
-    /* Stat strip - ADJ navy cards */
-    .stripe { margin-top: 40px; }
-    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .stat { background: var(--navy); border-radius: var(--r-lg); padding: 26px 24px; position: relative; overflow: hidden; }
-    .stat::after { content: ""; position: absolute; right: -20px; top: -20px; width: 90px; height: 90px; background: radial-gradient(circle, rgba(254,169,0,.16), transparent 70%); }
-    .stat b { font-family: var(--font-display); font-weight: 800; font-size: 2.3rem; color: var(--brand); line-height: 1; display: block; letter-spacing: -.02em; }
-    .stat span { display: block; margin-top: 9px; color: #c4cdda; font-size: .9rem; line-height: 1.4; }
+    /* Fact band - single ADJ navy strip */
+    .stripe { margin-top: 44px; }
+    .factbar { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--navy); border-radius: var(--r-lg); overflow: hidden; }
+    .fact { padding: 24px 28px; position: relative; }
+    .fact + .fact::before { content: ""; position: absolute; left: 0; top: 22px; bottom: 22px; width: 1px; background: rgba(255,255,255,.12); }
+    .fact b { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; color: var(--brand); line-height: 1; letter-spacing: -.01em; display: block; }
+    .fact span { display: block; margin-top: 8px; color: #b6c0d0; font-size: .88rem; line-height: 1.42; }
 
     section { padding: 78px 0; }
     .head { max-width: 680px; margin-bottom: 44px; }
@@ -260,7 +258,7 @@
     @media (max-width: 960px) {
       .hero__grid { grid-template-columns: 1fr; gap: 40px; }
       .hero__badge--1 { left: 8px; } .hero__badge--2 { right: 8px; }
-      .stats { grid-template-columns: 1fr 1fr; }
+      .factbar { grid-template-columns: 1fr 1fr; } .factbar .fact + .fact::before { display: none; }
       .flow, .icards { grid-template-columns: 1fr; }
       .compare { grid-template-columns: 1fr; }
       .dist__grid { grid-template-columns: 1fr; gap: 30px; }
@@ -268,7 +266,7 @@
     }
     @media (max-width: 680px) {
       .nav { display: none; }
-      .stats { grid-template-columns: 1fr; }
+      .factbar { grid-template-columns: 1fr; }
       .hero__cta .btn { width: 100%; }
       .rec__left, .rec__right { padding: 34px 26px; }
       .cta__box { padding: 40px 28px; }
@@ -328,7 +326,7 @@
               <span class="pill pill--gold"><span class="dot"></span>Niezależny przewodnik</span>
               <span class="pill pill--soft"><span class="dot"></span>Wrocław</span>
             </div>
-            <h1 class="reveal" data-d="1">Zrób <span class="mark">prawo jazdy kat. B</span> we Wrocławiu</h1>
+            <h1 class="reveal" data-d="1">Prawo jazdy <span class="mark">kat. B</span> we Wrocławiu: od PKK do egzaminu w DORD</h1>
             <p class="lead reveal" data-d="2">Bez błądzenia po forach. Pokazujemy cały proces krok po kroku: od profilu PKK, przez kurs i jazdy, po egzamin w DORD. Plus konkretny typ na dobrą szkołę w mieście.</p>
             <div class="hero__cta reveal" data-d="2">
               <a href="#szkola" class="btn btn--gold"><span>Zobacz polecaną szkołę</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
@@ -355,11 +353,11 @@
 
         <!-- STAT STRIP -->
         <div class="stripe reveal">
-          <div class="stats">
-            <div class="stat"><b>17,9</b><span>Wiek startu kursu: 17 lat i 9 miesięcy</span></div>
-            <div class="stat"><b>30 h</b><span>Minimum godzin jazd z instruktorem</span></div>
-            <div class="stat"><b>2 cz.</b><span>Egzamin państwowy: teoria i praktyka</span></div>
-            <div class="stat"><b>3,5 t</b><span>Dopuszczalna masa auta na kat. B</span></div>
+          <div class="factbar">
+            <div class="fact"><b>17 lat 9 mies.</b><span>najwcześniejszy start kursu</span></div>
+            <div class="fact"><b>30 godzin</b><span>minimum jazd z instruktorem</span></div>
+            <div class="fact"><b>2 części</b><span>egzaminu: teoria i praktyka</span></div>
+            <div class="fact"><b>do 3,5 t</b><span>auta w zakresie kat. B</span></div>
           </div>
         </div>
       </div>
