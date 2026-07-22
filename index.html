@@ -82,6 +82,8 @@
     .btn--out { background: transparent; color: var(--navy); border: 1.7px solid #cfd6e2; }
     .btn--out:hover { border-color: var(--navy); background: #f2f5f9; transform: translateY(-2px); }
     .btn--out:active { transform: scale(.97); }
+    .btn--out-dark { color: #fff; border-color: rgba(255,255,255,.3); }
+    .btn--out-dark:hover { border-color: #fff; background: rgba(255,255,255,.08); }
 
     /* Header */
     .header { position: sticky; top: 0; z-index: 60; background: rgba(255,255,255,.86); backdrop-filter: saturate(160%) blur(12px); border-bottom: 1px solid transparent; transition: box-shadow .3s var(--ease), border-color .3s var(--ease); }
@@ -98,28 +100,28 @@
     .nav a:hover { color: var(--ink); } .nav a:hover::after { width: 100%; }
     .header__cta .btn { padding: 11px 20px; font-size: .92rem; }
 
-    /* Hero */
-    .hero { position: relative; padding: 66px 0 40px; overflow: hidden; background: linear-gradient(180deg, #fbfcfe, var(--surface)); }
-    .hero::before { content: ""; position: absolute; top: -160px; right: -120px; width: 620px; height: 620px; background: radial-gradient(circle, rgba(254,169,0,.14), rgba(254,169,0,0) 66%); pointer-events: none; }
-    .hero__grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.02fr .98fr; gap: 54px; align-items: center; }
-    .hero__pills { display: flex; gap: 9px; flex-wrap: wrap; margin-bottom: 20px; }
-    .hero h1 { font-weight: 800; font-size: clamp(2.3rem, 1rem + 5vw, 4rem); line-height: 1.02; margin-bottom: 20px; }
-    .hero h1 .mark { color: var(--brand-dark); white-space: nowrap; }
-    .hero__cta { display: flex; flex-wrap: wrap; gap: 13px; margin: 28px 0 22px; }
-    .hero__trust { display: flex; flex-direction: column; gap: 9px; }
-    .hero__trust li { display: flex; align-items: center; gap: 10px; font-size: .96rem; font-weight: 500; color: var(--navy-light); list-style: none; }
-    .hero__trust .ck { width: 22px; height: 22px; border-radius: 50%; background: #fff5df; color: var(--brand-dark); display: grid; place-items: center; flex: none; }
-    .hero__trust .ck svg { width: 13px; height: 13px; }
-
-    .hero__media { position: relative; }
-    .hero__photo { border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--sh-lg); border: 6px solid #fff; aspect-ratio: 4/3; }
-    .hero__photo img { width: 100%; height: 100%; object-fit: cover; }
-    .hero__badge { position: absolute; display: flex; align-items: center; gap: 11px; background: #fff; border-radius: 16px; padding: 13px 17px; box-shadow: var(--sh-md); font-weight: 700; color: var(--ink); font-size: .95rem; }
-    .hero__badge small { display: block; font-size: .68rem; font-weight: 700; color: var(--txt-soft); text-transform: uppercase; letter-spacing: .08em; }
-    .hero__badge .ic { width: 34px; height: 34px; border-radius: 10px; background: var(--brand); color: var(--navy); display: grid; place-items: center; flex: none; }
-    .hero__badge .ic svg { width: 18px; height: 18px; }
-    .hero__badge--1 { top: 26px; left: -22px; }
-    .hero__badge--2 { bottom: 24px; right: -18px; }
+    /* Hero - dark road */
+    .hero { position: relative; background: var(--navy-dark); color: #fff; padding: 84px 0 0; overflow: hidden; }
+    .hero__glow { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 760px; height: 480px; background: radial-gradient(ellipse at center 30%, rgba(254,169,0,.20), transparent 66%); pointer-events: none; }
+    .hero__grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px); background-size: 46px 46px; mask-image: radial-gradient(ellipse at 50% 20%, #000, transparent 72%); pointer-events: none; }
+    .hero__inner { position: relative; z-index: 2; text-align: center; max-width: 920px; margin-inline: auto; }
+    .hero__pills { display: flex; gap: 9px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
+    .hero .pill--soft { background: rgba(255,255,255,.07); color: #cdd6e4; border-color: rgba(255,255,255,.15); }
+    .hero .pill--soft .dot { background: var(--brand); }
+    .hero h1 { font-weight: 800; font-size: clamp(2.4rem, 1rem + 5.4vw, 4.3rem); line-height: 1.04; letter-spacing: -.025em; color: #fff; margin-bottom: 22px; }
+    .hero h1 .mark { color: var(--brand); white-space: nowrap; }
+    .hero__lead { color: #aab5c7; font-size: 1.12rem; line-height: 1.6; max-width: 62ch; margin: 0 auto 32px; }
+    .hero__cta { display: flex; flex-wrap: wrap; gap: 13px; justify-content: center; margin-bottom: 60px; }
+    /* integrated route of stages */
+    .hero__route { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(4, 1fr); max-width: 960px; margin: 0 auto; padding-bottom: 74px; }
+    .hstage { position: relative; text-align: center; padding: 0 12px; }
+    .hstage__dot { width: 22px; height: 22px; border-radius: 50%; background: var(--navy-dark); border: 3px solid var(--brand); margin: 0 auto 18px; position: relative; z-index: 2; box-shadow: 0 0 0 6px var(--navy-dark); }
+    .hstage--end .hstage__dot { background: var(--brand); }
+    .hstage::before { content: ""; position: absolute; top: 9px; right: 50%; width: 100%; height: 3px; background: repeating-linear-gradient(90deg, rgba(254,169,0,.75) 0 12px, transparent 12px 23px); z-index: 1; }
+    .hstage:first-child::before { display: none; }
+    .hstage b { display: block; font-family: var(--font-display); font-weight: 700; color: #fff; font-size: 1.06rem; }
+    .hstage span { display: block; margin-top: 4px; color: #8e9bb1; font-size: .85rem; }
+    .hero__fade { position: absolute; left: 0; right: 0; bottom: 0; height: 80px; background: linear-gradient(180deg, transparent, rgba(24,35,54,.6)); pointer-events: none; }
 
     /* Fact band - single ADJ navy strip */
     .stripe { margin-top: 44px; }
@@ -269,6 +271,9 @@
     @media (max-width: 680px) {
       .nav { display: none; }
       .factbar { grid-template-columns: 1fr; }
+      .hero { padding-top: 60px; }
+      .hero__route { grid-template-columns: 1fr 1fr; row-gap: 30px; }
+      .hstage:nth-child(3)::before { display: none; }
       .hero__cta .btn { width: 100%; }
       .rec__left, .rec__right { padding: 34px 26px; }
       .cta__box { padding: 40px 28px; }
@@ -321,48 +326,29 @@
   <main id="top">
     <!-- HERO -->
     <section class="hero">
+      <div class="hero__grid-bg"></div>
+      <div class="hero__glow"></div>
       <div class="wrap">
-        <div class="hero__grid">
-          <div>
-            <div class="hero__pills reveal">
-              <span class="pill pill--gold"><span class="dot"></span>Niezależny przewodnik</span>
-              <span class="pill pill--soft"><span class="dot"></span>Wrocław</span>
-            </div>
-            <h1 class="reveal" data-d="1">Prawo jazdy <span class="mark">kat. B</span> we Wrocławiu: od PKK do egzaminu w DORD</h1>
-            <p class="lead reveal" data-d="2">Bez błądzenia po forach. Pokazujemy cały proces krok po kroku: od profilu PKK, przez kurs i jazdy, po egzamin w DORD. Plus konkretny typ na dobrą szkołę w mieście.</p>
-            <div class="hero__cta reveal" data-d="2">
-              <a href="#szkola" class="btn btn--gold"><span>Zobacz polecaną szkołę</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-              <a href="#start" class="btn btn--out"><span>Od czego zacząć</span></a>
-            </div>
-            <ul class="hero__trust reveal" data-d="3">
-              <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Kurs możesz zacząć od 17 lat i 9 miesięcy</li>
-              <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Egzamin państwowy w DORD Wrocław</li>
-              <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Manual albo automat, auta do 3,5 t</li>
-            </ul>
+        <div class="hero__inner">
+          <div class="hero__pills reveal">
+            <span class="pill pill--gold"><span class="dot"></span>Niezależny przewodnik</span>
+            <span class="pill pill--soft"><span class="dot"></span>Wrocław</span>
           </div>
-          <div class="hero__media reveal" data-d="2">
-            <div class="hero__photo"><img src="assets/hero-kat-b.webp" alt="Auto szkoły jazdy Akademia Dobrej Jazdy na tle wrocławskiej architektury" loading="eager" width="800" height="600"></div>
-            <div class="hero__badge hero__badge--1">
-              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg></span>
-              <span><small>Minimum jazd</small>30 godzin</span>
-            </div>
-            <div class="hero__badge hero__badge--2">
-              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></span>
-              <span><small>Egzamin w</small>DORD Wrocław</span>
-            </div>
+          <h1 class="reveal" data-d="1">Prawo jazdy <span class="mark">kat. B</span> we Wrocławiu: od PKK do egzaminu w DORD</h1>
+          <p class="hero__lead reveal" data-d="2">Bez błądzenia po forach. Cały proces krok po kroku: od profilu PKK, przez kurs i jazdy, po egzamin w DORD. Plus konkretny typ na dobrą szkołę w mieście.</p>
+          <div class="hero__cta reveal" data-d="2">
+            <a href="#szkola" class="btn btn--gold"><span>Zobacz polecaną szkołę</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+            <a href="#start" class="btn btn--out btn--out-dark"><span>Od czego zacząć</span></a>
           </div>
         </div>
-
-        <!-- STAT STRIP -->
-        <div class="stripe reveal">
-          <div class="factbar">
-            <div class="fact"><b>17 lat 9 mies.</b><span>najwcześniejszy start kursu</span></div>
-            <div class="fact"><b>30 godzin</b><span>minimum jazd z instruktorem</span></div>
-            <div class="fact"><b>2 części</b><span>egzaminu: teoria i praktyka</span></div>
-            <div class="fact"><b>do 3,5 t</b><span>auta w zakresie kat. B</span></div>
-          </div>
+        <div class="hero__route reveal" data-d="3">
+          <div class="hstage"><span class="hstage__dot"></span><b>PKK</b><span>profil i badania</span></div>
+          <div class="hstage"><span class="hstage__dot"></span><b>Kurs</b><span>teoria i jazdy</span></div>
+          <div class="hstage"><span class="hstage__dot"></span><b>Egzamin</b><span>DORD Wrocław</span></div>
+          <div class="hstage hstage--end"><span class="hstage__dot"></span><b>Prawko</b><span>jeździsz sam</span></div>
         </div>
       </div>
+      <div class="hero__fade"></div>
     </section>
 
     <!-- START -->
