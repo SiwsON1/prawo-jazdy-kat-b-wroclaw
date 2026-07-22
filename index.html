@@ -214,18 +214,23 @@
     .crow p { color: var(--txt-soft); font-size: .97rem; }
 
     /* Recommendation */
-    .rec__box { display: grid; grid-template-columns: 1.15fr .85fr; gap: 0; border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--sh-lg); border: 1px solid var(--line); }
-    .rec__left { background: var(--surface); padding: 48px 46px; }
-    .rec__logo-plate { display: inline-flex; background: var(--navy); border-radius: 14px; padding: 14px 20px; margin-bottom: 24px; }
+    .rec__box { position: relative; display: grid; grid-template-columns: 1.15fr .85fr; gap: 0; border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--sh-lg); border: 1px solid var(--line); }
+    .rec__box::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--brand), var(--brand-light)); z-index: 3; }
+    .rec__left { position: relative; background: var(--surface); padding: 50px 46px; }
+    .rec__flag { display: flex; width: fit-content; align-items: center; gap: 8px; font-family: var(--font-nav); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--brand-dark); background: #fff5df; padding: 7px 13px; border-radius: 999px; margin-bottom: 22px; }
+    .rec__flag svg { width: 14px; height: 14px; }
+    .rec__logo-plate { display: inline-flex; background: var(--navy); border-radius: 14px; padding: 14px 20px; margin-bottom: 22px; }
     .rec__logo-plate img { height: 40px; width: auto; }
-    .rec h2 { font-weight: 800; font-size: clamp(1.6rem, 1rem + 1.9vw, 2.2rem); line-height: 1.1; }
+    .rec h2 { font-weight: 800; font-size: clamp(1.6rem, 1rem + 1.9vw, 2.25rem); line-height: 1.12; }
     .rec h2 .name { color: var(--brand-dark); }
     .rec p { color: var(--txt-soft); margin-top: 14px; font-size: 1.02rem; }
-    .rec__right { background: var(--navy); color: #fff; padding: 44px 40px; display: flex; flex-direction: column; justify-content: center; }
-    .rec__right ul { list-style: none; margin-bottom: 24px; }
+    .rec__right { position: relative; overflow: hidden; background: var(--navy); color: #fff; padding: 46px 40px; display: flex; flex-direction: column; justify-content: center; }
+    .rec__right::before { content: ""; position: absolute; inset: 0; background-image: repeating-linear-gradient(90deg, rgba(255,255,255,.045) 0 1px, transparent 1px 46px), repeating-linear-gradient(0deg, rgba(255,255,255,.045) 0 1px, transparent 1px 46px); }
+    .rec__right::after { content: ""; position: absolute; top: -50px; right: -50px; width: 240px; height: 240px; background: radial-gradient(circle, rgba(254,169,0,.2), transparent 68%); }
+    .rec__right ul { position: relative; z-index: 1; list-style: none; margin-bottom: 24px; }
     .rec__right li { display: flex; align-items: flex-start; gap: 12px; padding: 9px 0; font-size: 1rem; color: #e6eaf1; }
     .rec__right li svg { width: 21px; height: 21px; color: var(--brand); flex: none; margin-top: 1px; }
-    .rec__right .btn { width: 100%; }
+    .rec__right .btn { position: relative; z-index: 1; width: 100%; }
 
     /* FAQ */
     .faq__list { max-width: 840px; margin-inline: auto; }
@@ -475,6 +480,7 @@
       <div class="wrap">
         <div class="rec__box reveal">
           <div class="rec__left">
+            <span class="rec__flag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>Nasz typ na Wrocław</span>
             <span class="rec__logo-plate"><img src="assets/logo-adj.png" alt="Akademia Dobrej Jazdy Wrocław"></span>
             <h2 class="rec">Dobrym wyborem we Wrocławiu jest <span class="name">Akademia Dobrej Jazdy</span></h2>
             <p>Szukasz konkretu zamiast przeklikiwania dziesiątek ofert? Akademia Dobrej Jazdy prowadzi kursy kat. B we Wrocławiu, w manualu i na automacie. Szczegóły, ceny i terminy znajdziesz bezpośrednio u nich.</p>
